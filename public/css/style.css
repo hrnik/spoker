@@ -1,0 +1,151 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #354b60;
+}
+
+*{
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+.container{
+
+}
+
+.header{
+  text-align: center;
+  padding: 3rem 0;
+  font-family: 'Lato', sans-serif;
+}
+.header-title{
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+main{
+
+}
+
+ul{
+  list-style: none outside none;
+  padding: 0;
+}
+
+a{
+  color: #2980b9;
+  text-decoration: none;
+}
+
+.m-hide{
+  display: none;
+}
+
+.section{
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+.section__container{
+  margin:0 auto;
+  text-align: center;
+  padding: 3rem;
+  width: 600px;
+  background: #fff;
+}
+
+
+
+ .section__list{
+  margin-bottom: 3rem;
+}
+.section__title{
+  font-size: 1.2rem;;
+  margin-bottom: 1.5rem;
+}
+
+.section__list li{
+  margin-bottom: 0.75rem;
+}
+
+.btn{
+  color: #354b60;
+  padding: 0.75rem 1.5rem;
+  background: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  border: 2px solid #354b60;
+  transition: all 0.3s;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:hover, .btn--active{
+  background: #354b60;
+  color: #fff;
+}
+
+.btn--disable{
+  background: #ececec;
+  color: #fff;
+  border: 2px solid #ececec;
+  cursor: default;
+}
+
+.btn--vote{
+  width: 80px;
+  display: block;
+  margin-top: 0.75rem;
+}
+
+.input-text{
+  padding: 0.75rem 1rem;
+  border: 2px solid #354b60;
+  font-size: 14px;
+}
+
+.btn-list, .users-list{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  flex-flow: row wrap;
+  align-items: flex-start;
+}
+
+.btn-list--disable .btn{
+  background: #ececec;
+  color: #fff;
+  border: 2px solid #ececec;
+  cursor: default;
+}
+
+
+.vote-result__svg{
+  margin-bottom: 1.5rem;
+}
+
+.users-list__item{
+  border: 2px solid #354b60;
+  width: 100px;
+  margin-top: 0.75rem;
+}
+
+.users-list__item__name{
+  padding: 1rem 0;
+}
+
+.users-list__item__result{
+  color: #fff;
+  background-color: #354b60;
+  border-top:2px solid #354b60;
+  padding: 0.5rem;
+}
+
+.users-list__item__result--wait{
+  color: #354b60;
+  background:#fff;
+}

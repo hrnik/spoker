@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spoker is scrum poker</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato|Roboto:400,500&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="container">
+  <header class="header">
+    <div>
+      <span class="header-title"> - Spoker -</span>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</div>
+
+<script>
+  function clickBtn() {
+    var xhr = new XMLHttpRequest();
+
+    var body = 'name=' + encodeURIComponent(document.getElementById('nameRoom').value);
+
+    xhr.open("POST", '/rooms', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+
+    xhr.onreadystatechange = function () { // (3)
+      if (xhr.readyState != 4) return;
+
+
+      if (xhr.status != 200) {
+        alert(xhr.status + ': ' + xhr.statusText);
+      } else {
+        var response = JSON.parse(xhr.response);
+        location.replace(location.origin + '/rooms/' + response.room);
+
+      }
+
+    };
+
+    xhr.send(body);
+  }
+</script>
+{% block script %}{% endblock %}
+</body>
+</html>

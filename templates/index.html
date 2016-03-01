@@ -1,0 +1,25 @@
+{% extends "templates/base.html" %}
+{% block content %}
+
+
+<section class="select-rooms section">
+  <div class="section__container">
+    <div class="section__title">Select room</div>
+    <ul class="section__list">
+      {% for room in rooms %}
+      <li>
+        <a href="/rooms/{{room}}">#{{room}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <div class="section__title">Add room</div>
+    <form id="rooms">
+      <input type="text" class="input-text" id="nameRoom" placeholder="Room name">
+      <button class="btn" onclick="clickBtn()">Create</button>
+    </form>
+  </div>
+
+</section>
+
+{% endblock %}
