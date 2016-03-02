@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Spoker is scrum poker</title>
   <link href='https://fonts.googleapis.com/css?family=Lato|Roboto:400,500&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
 
@@ -13,39 +14,16 @@
     <div>
       <span class="header-title"> - Spoker -</span>
     </div>
-  </header>
+  </header> 
 
   <main>
     {% block content %}{% endblock %}
   </main>
 </div>
 
-<script>
-  function clickBtn() {
-    var xhr = new XMLHttpRequest();
+<script src="/vendors/js/simple-popup.min.js"></script>
+<script src="/public/app/createRoom.js"></script>
 
-    var body = 'name=' + encodeURIComponent(document.getElementById('nameRoom').value);
-
-    xhr.open("POST", '/rooms', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-
-    xhr.onreadystatechange = function () { // (3)
-      if (xhr.readyState != 4) return;
-
-
-      if (xhr.status != 200) {
-        alert(xhr.status + ': ' + xhr.statusText);
-      } else {
-        var response = JSON.parse(xhr.response);
-        location.replace(location.origin + '/rooms/' + response.room);
-
-      }
-
-    };
-
-    xhr.send(body);
-  }
-</script>
 {% block script %}{% endblock %}
 </body>
 </html>
