@@ -102,7 +102,7 @@ function createRoomChat(nspname) {
 
       setTimeout(()=> {
         finisVote();
-      }, 5000)
+      }, 10000)
 
     });
 

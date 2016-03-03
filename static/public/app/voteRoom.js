@@ -97,7 +97,12 @@ function initVote(user) {
       if (user.status) {
         result.classList.add('users-list__item__result--' + user.status);
         console.log('status', user.status);
-        result.innerHTML = (user.status && user.status != 'done' ? user.status : '') + (user.result ? user.result : '');
+        if(user.status && !(user.status == 'done' && user.result)){
+          result.innerHTML = user.status;
+        } else if(user.result){
+          result.innerHTML = user.result;
+        }
+        //result.innerHTML = (user.status && user.status != 'done' ? user.status : '') + (user.result ? user.result : '');
       } else {
         result.classList.add('m-hide');
       }
