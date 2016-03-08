@@ -102,12 +102,13 @@ a{
   color: #fff;
 }
 
-.btn--disable{
+.btn--disable, .btn:disabled, .btn:disabled:hover{
   background: #ececec;
   color: #fff;
   border: 2px solid #ececec;
   cursor: default;
 }
+
 
 .btn--vote{
   width: 80px;

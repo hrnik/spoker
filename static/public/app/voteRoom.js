@@ -67,6 +67,7 @@ function initVote(user) {
     console.log('Stat');
     result.textContent = '';
     btnList.classList.remove('btn-list--disable');
+    btnStart.disabled = true;
     wait.classList.remove('m-hide');
     result.classList.add('m-hide');
   });
@@ -74,6 +75,7 @@ function initVote(user) {
   socket.on('finish', function (msg) {
     wait.classList.add('m-hide');
     result.classList.remove('m-hide');
+    btnStart.disabled = false;
     result.textContent = msg;
   });
 

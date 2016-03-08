@@ -10,7 +10,7 @@ class Voting {
   }
 
   result() {
-    console.log(this.votes);
+
     var result = new Map();
     this.votes.forEach(key => {
       if (result.has(key)) {
@@ -20,13 +20,13 @@ class Voting {
         result.set(key, 1);
       }
     });
-
+    console.log(result);
     var maxValue = Math.max.apply(null, Array.from(result.values()));
     var countMax = 0;
     var resultString = '';
 
     for(let key of result.keys()) {
-      if(result.get(key)){
+      if(result.get(key) == maxValue){
         countMax++;
         resultString = key;
       }
