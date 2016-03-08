@@ -18,8 +18,8 @@ app.use(bodyParser());
 app.use(router.routes());
 app.use(router.allowedMethods());
 var server = require('http').Server(app.callback()),
-    io = require('socket.io')(server),
-    chatRooms = new Set();
+  io = require('socket.io')(server),
+  chatRooms = new Set();
 chatRooms.add('developers');
 chatRooms.add('marketing');
 
@@ -34,15 +34,16 @@ app.use(function *() {
 });
 
 
-
 router
   .get('/rooms/:room', function *(next) {
     if (!chatRooms.has(this.params.room)) {
       createRoomChat(this.params.room);
       chatRooms.add(this.params.room)
     }
-    yield this.render('rooms',{
-      voteValues: ['1/4', '1/2', '1', '2', '3', '5']
+    var voteValues = this.params.room === 'marketing' ? ['1', '2', '3', '5', '8', '13']
+      : ['1/4', '1/2', '1', '2', '3', '5'];
+    yield this.render('rooms', {
+      voteValues: voteValues
     });
   })
   .post('/rooms', function *(next) {
@@ -52,9 +53,6 @@ router
     };
 
   });
-
-
-
 
 
 function createRoomChat(nspname) {
@@ -71,7 +69,7 @@ function createRoomChat(nspname) {
 
 
     socket.on('connect user', data => {
-      if(data){
+      if (data) {
         userName = data;
         if (!users) {
           users = new Map();
@@ -108,7 +106,7 @@ function createRoomChat(nspname) {
 
     socket.on('vote', data => {
       var user = users.get(userName);
-      if(user){
+      if (user) {
         user.status = 'done';
         users.set(userName, user);
         updateUsers(users);
