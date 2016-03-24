@@ -41,7 +41,7 @@ router
       chatRooms.add(this.params.room)
     }
     var voteValues = this.params.room === 'marketing' ? ['1', '2', '3', '5', '8', '13']
-      : ['1/4', '1/2', '1', '2', '3', '5'];
+      : ['1/4', '1/2', '1', '2', '3', '5', '8', '13'];
     yield this.render('rooms', {
       voteValues: voteValues
     });

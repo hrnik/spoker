@@ -32,7 +32,9 @@ class Voting {
       }
     }
 
-    if(countMax > 1){
+    console.log(result.get(resultString));
+    console.log(this.votes.length/2);
+    if(countMax > 1 || result.get(resultString) < this.votes.length/2){
       return 'Bad work!'
     } else {
       return resultString;

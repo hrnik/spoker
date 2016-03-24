@@ -113,7 +113,8 @@ a{
 .btn--vote{
   width: 80px;
   display: block;
-  margin-top: 0.75rem;
+  margin-top: 1rem;
+  margin-right:3rem;
 }
 
 .input-text{
