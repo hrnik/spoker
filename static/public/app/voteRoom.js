@@ -7,6 +7,7 @@
 
 var socket = io(location.pathname.replace('/rooms', '')),
   btnStart = document.getElementById('btnStart'),
+  btnStop = document.getElementById('btnStop'),
   btnList = document.getElementsByClassName('btn-list')[0],
   result = document.getElementsByClassName('result')[0],
   wait = document.getElementsByClassName('vote-result__svg')[0],
@@ -22,7 +23,7 @@ var popup = new Popup(popupEl, {
 });
 
 btnList.classList.add('btn-list--disable');
-
+btnStop.disabled = true;
 
 if (user) {
   initVote(user);
@@ -35,6 +36,10 @@ btnStart.onclick = function () {
   socket.emit('start');
 };
 
+btnStop.onclick = function(){
+  socket.emit('stop');
+};
+
 wathcerLink.onclick = function () {
   popup.close();
   initVote();
@@ -42,7 +47,7 @@ wathcerLink.onclick = function () {
 
 function clickBtn(data) {
   socket.emit('vote', data);
-   btnList.classList.add('btn-list--disable');
+  btnList.classList.add('btn-list--disable');
 }
 
 function addUser() {
@@ -68,6 +73,7 @@ function initVote(user) {
     result.textContent = '';
     btnList.classList.remove('btn-list--disable');
     btnStart.disabled = true;
+    btnStop.disabled = false;
     wait.classList.remove('m-hide');
     result.classList.add('m-hide');
   });
@@ -76,6 +82,7 @@ function initVote(user) {
     wait.classList.add('m-hide');
     result.classList.remove('m-hide');
     btnStart.disabled = false;
+    btnStop.disabled = true;
     result.textContent = msg;
   });
 

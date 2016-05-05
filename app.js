@@ -2,7 +2,7 @@ var koa = require('koa');
 var views = require('koa-views');
 var session = require('koa-session');
 var koaStatic = require('koa-static');
-var Voting = require('modules/vote').Voting;
+var Voting = require('./modules/vote').Voting;
 var router = require('koa-router')();
 var bodyParser = require('koa-bodyparser');
 
@@ -27,7 +27,6 @@ chatRooms.forEach(room => createRoomChat(room));
 
 
 app.use(function *() {
-
   yield this.render('index', {
     rooms: Array.from(chatRooms)
   });
@@ -98,9 +97,7 @@ function createRoomChat(nspname) {
 
       updateUsers(users);
 
-      setTimeout(()=> {
-        finisVote();
-      }, 10000)
+
 
     });
 
@@ -135,6 +132,10 @@ function createRoomChat(nspname) {
       updateUsers(users);
     });
 
+    socket.on('stop', ()=> {
+      finisVote();
+    });
+
     function finisVote() {
 
       for (var key of users.keys()) {
@@ -142,7 +143,7 @@ function createRoomChat(nspname) {
         if (results.has(key)) {
           user.result = results.get(key);
         } else {
-          user.status = 'fail';
+          user.status = '-';
         }
         users.set(key, user);
       }
