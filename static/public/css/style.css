@@ -130,7 +130,7 @@ a{
 
 .btn-list, .users-list{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 3rem;
   flex-flow: row wrap;
   align-items: flex-start;
@@ -156,6 +156,8 @@ a{
   border: 2px solid #354b60;
   width: 100px;
   margin-top: 0.75rem;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
 }
 
 .users-list__item__name{
